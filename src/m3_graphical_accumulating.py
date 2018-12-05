@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,20 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    left = point
+    right = rg.Point(point.x + length, point.y)
+    distance_between_lines = 30
+    # window = rg.RoseWindow(400, 400)
+
+    for _ in range(n):
+        line = rg.Line(left, right)
+        line.attach_to(window)
+        window.render()
+        left = rg.Point(left.x, left.y + distance_between_lines)
+        right = rg.Point(right.x, right.y + distance_between_lines)
+        window.render()
+
+    # window.close_on_mouse_click()
 
 
 def run_test_draw_lines():
@@ -161,7 +175,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -174,9 +188,23 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    left = point
+    right = rg.Point(point.x + 100, point.y - 100)
+    m = (100/((n-1)/2))
 
+    for _ in range(n):
+
+        line = rg.Line(left, right)
+        line.attach_to(window)
+        window.render()
+        left = rg.Point(left.x, left.y)
+        right = rg.Point(right.x, right.y + m)
+        point.x = point.x
+        window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
+
 main()
